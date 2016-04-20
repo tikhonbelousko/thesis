@@ -1,6 +1,6 @@
 %!TEX root = ../thesis.tex
 
-\section{ Architecture }
+\section{ ARCHITECTURE }
 \subsection{ Client }
 
 The first significant part of the application is the client which will
@@ -27,7 +27,7 @@ is follows:
 
 For the reason of the easy distribution it was selected to use browser based client. Thus
 client is implemented as single-page web application, which should support all modern browsers such
-as Safari, Google Chrome, Firefox, Microsoft Edge 13.
+as Safari, Google Chrome, Firefox, Microsoft Edge.
 
 \subsection{ RESTful Server }
 
@@ -125,10 +125,31 @@ style of the layers: adjust colors of the geometry, line width, set borders to p
 set background patterns. Finally, maps based on vector tiles allow smooth transitions between
 zoom levels. Although, the cost of usage of the vector tiles is the lack of
 compatibility with older browsers. At the moment most of the libraries demand WebGL support and
-Mapbox GL JS does not support Internet Explorer below 9-th version.
+latest browser versions which are Chrome 49.0, Safari 9, Internet Explorer 10 and higher,
+Microsoft Edge 13~\cite{google:support,mapbox:support}. Another drawback of usage tiles is
+that geometry can not be transformed in real-time and rendering small amounts of data is actually
+slower than GeoJSON approach.
 
+Switching from GeoJSON server to vector-tile server resulted in considerable speed improvement.
+If previously rendering time took around 3 seconds and amount of transfered data was around 1.8 Mb,
+then with tile server rendering takes less than a second and size of the data transfered to the
+client is around 100 kb.
 
+\subsection{ Summary }
 
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{architecture.pdf}
+    \caption{Final System Architecture}
+    \label{pic:architecture}
+\end{figure}
 
+Although, tiles suit well for rendering considerable amounts data, for points rendering it was
+decided to utilize GeoJSON data. The final architecture is illustrated on
+Figure~\ref{pic:architecture} and can be described as follows:
 
-
+\begin{enumerate}
+  \item Web-based client supporting latest browsers.
+  \item GeoJSON RESTfull server providing points data.
+  \item Tile server providing data about lines.
+\end{enumerate}
