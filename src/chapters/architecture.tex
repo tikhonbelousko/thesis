@@ -11,7 +11,7 @@ is follows:
   \item Panning and zooming map.
   \item Selecting a point on the map to build a whole graph of
   the routes needed to move from selected point to all other points of the city. All of the routes
-  are parametrized by color and width. This parameters are calculated utilizing information
+  are parametrized by color and width. These parameters are calculated utilizing information
   about transport type specified in this point and the coefficient which is defined as number of
   times this particular line is used in all of the directions calculated from this point.
   \item Showing prevailing transport in all points of the grid. Prevailing transport is defined
@@ -39,50 +39,53 @@ For our application following end-points were selected:
 
 \begin{itemize}
   \item \textbf{\texttt{GET /points}} \\
-  The returned points are described as FeatureCollection of points with following properties
-  \begin{itemize}
-    \item \textbf{name} is a string;
-    \item \textbf{id} is a unique identifier of the point encoded as string;
-    \item \textbf{prevalingTransport} could be \mbox{``BUS''}, \mbox{``TROLLEYBUS''},
+  The returned points are described as FeatureCollection of points with following
+  properties (see also Listing~\ref{lst:points_format}):
+
+  \begin{description}
+    \item[name] is a string;
+    \item[id] is a unique identifier of the point encoded as string;
+    \item[prevalingTransport] could be \mbox{``BUS''}, \mbox{``TROLLEYBUS''},
     \mbox{``TRAM''}, \\ \mbox{``SUBWAY''}, \mbox{``COMMUTER\_TRAIN''}, \mbox{``SHARE\_TAXI''},
     \mbox{``DRIVING''}, \\ \mbox{``WALKING''}.
-    \item \textbf{accessibility} is a floating number in range from 0 to 1.
-  \end{itemize}
+    \item[accessibility] is a floating number in range from 0 to 1.
+  \end{description}
 
-  \begin{verbatim}
-{
-  "type": "FeatureCollection",
-  "features": [
-    "type": "Feature",
-    "geometry": [0,0],
-    "properties": {
-      "id": 0,
-      "name": "Location Name",
-      "prevailingTransport": "SUBWAY",
-      "accessibility": 0.6
-    }
-  ]
-}
-  \end{verbatim}
+  \begin{lstlisting}[language=json, caption=Points response example, label=lst:points_format]
+  {
+    "type": "FeatureCollection",
+    "features": [
+      "type": "Feature",
+      "geometry": [0,0],
+      "properties": {
+        "id": 0,
+        "name": "Location Name",
+        "prevailingTransport": "SUBWAY",
+        "accessibility": 0.6
+      }
+    ]
+  }
+  \end{lstlisting}
 
   \item \textbf{\texttt{GET /lines?point\_id}}
+
   This endpoint is parametrized by point\_id which means that if point id is presented
   then the client will receive only those lines which are associated with specified point.
   On the other hand, if no point id is not specified all lines are returned.
 
-  The properties of the lines can be describe as follows:
-  \begin{itemize}
-    \item \textbf{id} is a unique identifier of the line encoded as string;
-    \item \textbf{travelMode} is on of the \mbox{``BUS''}, \mbox{``TROLLEYBUS''},
+  The properties of the lines can be describe as follows (see also Listing~\ref{lst:lines_format}):
+  \begin{description}
+    \item[id] is a unique identifier of the line encoded as string;
+    \item[travelMode] is on of the \mbox{``BUS''}, \mbox{``TROLLEYBUS''},
     \mbox{``TRAM''}, \\ \mbox{``SUBWAY''}, \mbox{``COMMUTER\_TRAIN''}, \mbox{``SHARE\_TAXI''},
     \mbox{``DRIVING''}, or \\ \mbox{``WALKING''}.
-    \item \textbf{weight} number of times this line was used in all of the routes across all of
+    \item[weight] number of times this line was used in all of the routes across all of
     the directions' set.
-    \item \textbf{duration} time needed to travel this line in seconds.
-    \item \textbf{distance} total length of this line in meters.
-  \end{itemize}
+    \item[duration] time needed to travel this line in seconds.
+    \item[distance] total length of this line in meters.
+  \end{description}
 
-  \begin{verbatim}
+\begin{lstlisting}[language=json, caption=Lines response example, label={lst:lines_format}]
 {
   "type": "FeatureCollection",
   "features": [
@@ -98,7 +101,7 @@ For our application following end-points were selected:
     ]
   }
 }
-  \end{verbatim}
+\end{lstlisting}
 \end{itemize}
 
 It is important to note that we could also add such filtering parameters as \texttt{speed} and
@@ -135,14 +138,8 @@ If previously rendering time took around 3 seconds and amount of transfered data
 then with tile server rendering takes less than a second and size of the data transfered to the
 client is around 100 kb.
 
-\subsection{ Summary }
 
-\begin{figure}[t!]
-    \centering
-    \includegraphics[width=0.7\textwidth]{architecture.pdf}
-    \caption{Final System Architecture}
-    \label{pic:architecture}
-\end{figure}
+\subsection{ Summary }
 
 Although, tiles suit well for rendering considerable amounts data, for points rendering it was
 decided to utilize GeoJSON data. The final architecture is illustrated on
@@ -153,3 +150,10 @@ Figure~\ref{pic:architecture} and can be described as follows:
   \item GeoJSON RESTfull server providing points data.
   \item Tile server providing data about lines.
 \end{enumerate}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\textwidth]{architecture.pdf}
+  \caption{Final system architecture.}
+  \label{pic:architecture}
+\end{figure}
