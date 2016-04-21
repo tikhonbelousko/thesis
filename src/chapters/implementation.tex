@@ -71,9 +71,9 @@ The data collection was initiated before by Mathrioshka, thus the first task was
 grid points from the raw data. This step was performed utilizing script written in Python, which
 is reading file line by line and extracting starting location point from the data. The
 idea of the algorithm is presented in Listing~\ref{lst:points_extraction}. As can be seen from
-the listing, GeoHash [REFERENCE] standard was used to prevent repetitions of the points.
+the listing, Geohash~\cite{wiki:geohash} standard was used to prevent repetitions of the points.
 Thus, coordinates could be mapped to strings which can be utilized as ids in points dictionary.
-In our implementation for encoding PyGeohash library was used [REFERENCE].
+In our implementation for encoding \lstinline{python-geohash} library was used~\cite{pip:geohash}.
 
 \begin{lstlisting}[language=python, caption=Points extraction, label={lst:points_extraction}]
 points = []
