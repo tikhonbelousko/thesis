@@ -64,7 +64,7 @@ Most important elements are listed below:
     \centering
     \includegraphics[width=0.3\textwidth]{location-selector.pdf}
     \caption{Current location indicator.}
-    \label{pic:transport_filter}
+    \label{pic:location_selector}
   \end{figure}
 
   \item Map is the most important element of the interface which is presented on every screen
@@ -93,5 +93,107 @@ was not tested.
 \subsection{System Features}
 
 \begin{description}
-  \item[Use case 1:] Hello there this is the first use case... bla bla bla...
+  % Feature 1
+  \item[Use case 1:] Show all directions from specific location to all other points.
+
+  \underline{\smash{Primary actor:}} User
+
+  \underline{\smash{Main scenario:}}
+  \begin{enumerate}
+    \item User enters ``Location analysis'' mode.
+    \item User selects specific point on the grid.
+    \item The system displays all routes coming from selected point to all other points on the
+    grid. The routes are colored by the type of transport. The line which represents part
+    of the route has a width depending on weight of current line. The weight is calculated
+    as occurrence of this line in all possible routes, which means if two different
+    routes are going over particular line it means that the weight of this line will
+    be equal to two. In other words the wider the line, the more this line is used in all other
+    directions calculated for all points on the grid to all points.
+    \item The user is able to filter lines by transport type.
+    \item The user is able to switch color mode from coloring by transport to
+    coloring by speed.
+  \end{enumerate}
+
+  % Feature 2
+  \item[Use case 2:] Show prevailing transport
+
+  \underline{\smash{Primary actor:}} User
+
+  \underline{\smash{Main scenario:}}
+  \begin{enumerate}
+    \item User enters ``General overview'' mode.
+    \item User selects ``Prevailing transport'' option.
+    \item The grid of markers is displayed. Each marker is associated with one
+    point on the grid. The markers are colored accordingly to certain transport type. Prevailing
+    transport is defined by calculating total time spent in particular transport when
+    moving from current points to all other points on the grid.
+    \item The user is able to filter markers by transport type.
+  \end{enumerate}
+
+  % Feature 3
+  \item[Use case 3:] Most accessible locations
+
+  \underline{\smash{Primary actor:}} User
+
+  \underline{\smash{Main scenario:}}
+  \begin{enumerate}
+    \item User enters ``General overview'' mode.
+    \item User selects ``Most accessible locations'' option.
+    \item The grid of markers is displayed. Each marker is associated with one
+    point on the grid. The markers are colored accordingly to accessibility level of the
+    certain point. Accessibility is defined as total time spent in transport when user
+    moves from current points to all other points on the grid. Once accessibility
+    is calculated for all points the value is scaled to 0 to 100\%.
+    \item The user is able to filter markers by accessibility level from 50\% to 100\%.
+  \end{enumerate}
+
+  % Feature 4
+  \item[Use case 4:] Least accessible locations
+
+  \underline{\smash{Primary actor:}} User
+
+  \underline{\smash{Main scenario:}}
+  \begin{enumerate}
+    \item User enters ``General overview'' mode.
+    \item User selects ``Least accessible locations'' option.
+    \item The grid of markers is displayed. Each marker is associated with one
+    point on the grid. The markers are colored accordingly to accessibility level of the
+    certain point. Accessibility is defined as total time spent in transport when user
+    moves from current points to all other points on the grid. Once accessibility
+    is calculated for all points the value is scaled to 0 to 100\%.
+    \item The user is able to filter markers by accessibility level from 0\% to 50\%.
+  \end{enumerate}
+
+  \underline{\smash{Comments:}} This feature is very similar to 3rd use case except
+  the color scheme is different and filtering is preformed within other percentage range.
+
+  % Feature 5
+  \item[Use case 5:] Fastest parts of the routes
+
+  \underline{\smash{Primary actor:}} User
+
+  \underline{\smash{Main scenario:}}
+  \begin{enumerate}
+    \item User enters ``General overview'' mode.
+    \item User selects ``Fastest parts of the routes'' option.
+    \item All of the lines (routes) are displayed which has speed in a range from
+    20 km/h to 40 km/h. The lines are colored differently from yellow to green
+    depending on the speed.
+    \item The user is able to filter lines by speed using slider control.
+  \end{enumerate}
+
+  % Feature 6
+  \item[Use case 6:] Slowest parts of the routes
+
+  \underline{\smash{Primary actor:}} User
+
+  \underline{\smash{Main scenario:}}
+  \begin{enumerate}
+    \item User enters ``General overview'' mode.
+    \item User selects ``Slowest parts of the routes'' option.
+    \item All of the lines (routes) are displayed which has speed in a range from
+    0 km/h to 20 km/h. The lines are colored differently from dark red to light red
+    depending on the speed.
+    \item The user is able to filter lines by speed using slider control.
+  \end{enumerate}
 \end{description}
