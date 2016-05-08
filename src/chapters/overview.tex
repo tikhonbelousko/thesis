@@ -1,9 +1,15 @@
 %!TEX root = ../thesis.tex
 \section{OVERVIEW}
 
-% Write the description of this chapter
+This section is devoted to the description of the available geo-spatial data analysis tools. Also,
+modern web-based maps libraries are considered. Finally, data formats used for storing geographical
+data are reviewed.
 
 \subsection{GIS Tools for Accessibility Analysis}
+
+% QGIS + CartoDB
+There are
+
 \subsection{Modern Web-based Maps}
 In our application the choice of maps library should be made. In this section several
 libraries for maps drawing are reviewed. The pluses and minuses of each of the
@@ -86,8 +92,102 @@ library are considered.
 \end{description}
 
 \subsection{Data Formats}
+
+In the process of the development of transport accessibility analysis tool several
+particular data formats were used. In this section utilized formats will be described.
+
 \subsubsection{GeoJSON}
+
+One of the most extensively used formats for encoding various types of geographical data is
+GeoJSON which is actually a subset of JSON format~\cite{geojson:spec}. GeoJSON can store information
+about such objects as Point, MultiPoint, Line, LineString, MultiLineString, Polygon. Geometric
+objects which have some additional properties are stored as Feature objects. Moreover,
+Features can be organized in feature collection. The example of the location which
+represents center of the Moscow can be encoded as described on Listing~\ref{lst:geojson}.
+
+\begin{lstlisting}[language=json, caption=GeoJSON data example.,
+      label={lst:geojson}]
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [37.61581, 55.74489]
+  },
+  "properties": {
+    "name": "The Center of Moscow"
+  }
+}
+\end{lstlisting}
+
+
+The GeoJSON is text data format which results in larger size of the transfered data in comparison
+with binary formats. Although, usually on the server it can be compressed using gzip~\cite{gzip}
+which has native support in modern browsers. Compression results in dramatical size reduction up to
+5 times in general case. However, it should be mentioned that archiving adds small overhead in
+coding and decoding steps.
+
+\subsubsection{Geobuf}
+
+Geobuf is a compact data format for encoding geographical data. The format is based on Protocol
+Buffers -- language-neutral mechanism developed by Google for serializing structured
+data~\cite{protobuf}. Geobuf allows losslessly transformation of the GeoJSON data into protocol
+buffers. There are several important advantages like faster compression in comparison to even native
+JSON \texttt{parse} and \texttt{stringify} methods. Another valuable attribute of this format is
+compact size, which is 8 times smaller than raw GeoJSON and 2 times smaller than GeoJSON after
+applying gzip compression. The comparison of GeoJSON and Geobuf in terms size is presented on
+Table~\ref{tab:geobuf}.
+
+\begin{table}[ht]
+  \renewcommand{\arraystretch}{1.5}
+  \centering
+  \begin{tabular}{l l l}
+    \hline
+    & \textbf{normal} & \textbf{gzipped} \\
+    \hline
+    us-zips.json & 101.85 MB & 26.67 MB \\
+    % \hline
+    us-zips.pbf & 12.24 MB & 10.48 MB \\
+    % \hline
+    idaho.json & 10.92 MB & 2.57 MB \\
+    % \hline
+    idaho.pbf & 1.37 MB & 1.17 MB \\
+    \hline
+  \end{tabular}
+
+  \caption{Sample compression sizes~\cite{geobuf}.}
+  \label{tab:geobuf}
+\end{table}
+
 \subsubsection{MBTiles}
-\subsubsection{Protocol Buffers}
+
+Web maps may contain million of tiles, hence there is clearly a problem in storing and managing such
+enormous amount of data. To overcome the problem of handling so many tiles data Mapbox team has
+developed open-source data format for storing tiles in a single SQLite data base.
+
+SQLite is claimed to be ideal for the purpose of storing tiles since it is available on all of the
+platforms including mobile devices. Each \texttt{.sqlite} data base is self-contained and does not
+require any special setup, which results in high portability.
+
+Another great feature of the MBTiles format is the ability to effectively store duplicate tiles. As
+an example the tile located in the middle of the ocean can be considered (see
+Figure~\ref{pic:water-tile}). It is clear that there is considerable amount of tiles containing
+solid blue color. Taking in account all of the zoom levels it can lead to millions of the
+duplicates. However, MBTiles can reference thousands of tiles to the same image without
+the need for loading all look-alike pictures.
+
+Important to note that MBTiles can be used to store both image-based tiles encoded in PNG or
+vector tiles encoded in Protocol Buffers.
+
+\begin{figure}[htp]
+  {\par\centering
+  \includegraphics[width=0.20\textwidth]{water-tile}
+  \par}
+  \caption{Example of the tile duplicate.}
+  \label{pic:water-tile}
+\end{figure}
+
+
+
+
 
 
