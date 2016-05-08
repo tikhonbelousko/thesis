@@ -1,10 +1,93 @@
-\section{ OVERVIEW }
+%!TEX root = ../thesis.tex
+\section{OVERVIEW}
 
-\subsection{ GIS Tools for Accessibility Analysis }
-\subsection{ Modern Web-based Maps }
-\subsection{ Data Formats }
-\subsubsection{ GeoJSON }
-\subsubsection{ MBTiles }
-\subsubsection{ Protocol Buffers }
+% Write the description of this chapter
+
+\subsection{GIS Tools for Accessibility Analysis}
+\subsection{Modern Web-based Maps}
+In our application the choice of maps library should be made. In this section several
+libraries for maps drawing are reviewed. The pluses and minuses of each of the
+library are considered.
+
+\begin{description}
+
+  % Google
+  \item[Google Maps Javascript API] -- on of the most popular libraries
+    on the list~\cite{google:maps}. \\
+    \underline{\smash{Pluses:}}
+    \begin{itemize}
+      \item Maps styling.
+      \item Supports different localization options.
+      \item The most detailed map across the world.
+      \item StreetView.
+      \item Support for mobile devices.
+    \end{itemize}
+
+    \underline{\smash{Minuses:}}
+    \begin{itemize}
+      \item Does not support vector tiles.
+      \item Limited support for custom tiles.
+      \item Free until exceeding 25,000 map loads per 24 hours for 90 consecutive days.
+    \end{itemize}
+
+  % Leaflet
+  \item[Leaflet.js] -- lightweight mobile-friendly interactive maps
+    library~\cite{leaflet}. \\
+    \underline{\smash{Pluses:}}
+    \begin{itemize}
+      \item Small size -- only 33 KB of JavaScript code.
+      \item Relatively simple API.
+      \item Support for custom tile sources.
+      \item Support for multilayer maps.
+      \item Considerable amount of plug-ins.
+      \item Free and open-source.
+    \end{itemize}
+
+    \underline{\smash{Minuses:}}
+    \begin{itemize}
+      \item Does not support vector tiles.
+      \item Lack of Russian localization.
+    \end{itemize}
+
+  % Yandex Maps
+  \item[Yandex Maps] -- best maps fidelity in Russia~\cite{yandex:maps}. \\
+    \underline{\smash{Pluses:}}
+    \begin{itemize}
+      \item Highly detailed maps of Russia.
+      \item Support of Russian localization.
+      \item No restrictions for map views.
+    \end{itemize}
+
+    \underline{\smash{Minuses:}}
+    \begin{itemize}
+      \item Does not support vector tiles.
+      \item Does not support map styles.
+      \item Does not support custom tiles rendering.
+      \item Proprietary.
+    \end{itemize}
+
+  % Mapbox GL JS
+  \item[Mapbox GL JS] -- only library with whole vector tiles support~\cite{gh:mapboxgljs}. \\
+    \underline{\smash{Pluses:}}
+    \begin{itemize}
+      \item Supports vector tiles.
+      \item Supports real-time maps styles.
+      \item Supports custom tile source.
+      \item Based on Leaflet API.
+      \item Open source.
+    \end{itemize}
+
+    \underline{\smash{Minuses:}}
+    \begin{itemize}
+      \item Standard tile source has limitations on views per month.
+      \item Not fully detailed map of Russia.
+      \item Lack of Russian localization.
+    \end{itemize}
+\end{description}
+
+\subsection{Data Formats}
+\subsubsection{GeoJSON}
+\subsubsection{MBTiles}
+\subsubsection{Protocol Buffers}
 
 
