@@ -5,10 +5,83 @@ This section is devoted to the description of the available geo-spatial data ana
 modern web-based maps libraries are considered. Finally, data formats used for storing geographical
 data are reviewed.
 
-\subsection{GIS Tools for Accessibility Analysis}
+\subsection{Geographical Analysis Software}
 
-% QGIS + CartoDB
-There are
+There are many tools available for analysis of the geo-spatial data. However, in this section
+three different tools such as GRASS, QGIS, CartoDB will be reviewed. Although, mentioned
+tools may be considered as GIS, each of them provides different functionality and oriented
+on different user audience.
+
+\subsubsection{GRASS GIS}
+
+\begin{figure}[ht]
+  {\par\centering
+  \includegraphics[width=0.70\textwidth]{grass-gis}
+  \par}
+  \caption{GRASS GIS interface.}
+  \label{pic:grass}
+\end{figure}
+
+Originally GRASS GIS~\cite{grassgis} (see Figure~\ref{pic:grass}) was developed by US Army Construction Engineering
+Research Laboratories and has a history of 30 years of the development. It is a powerful  and open-
+source tool with large amount of capabilities. First, GRASS supports raster, voxel and vector
+analysis and visualization. In addition to that, there is a toolbox for image processing, allowing
+to apply variety of filters, adjust histograms and perform segmentation tasks. Finally, the program
+supports numerous formats such as SQLite databases, PostgreSQL, mySQL, ODBC, CSV, satellite data,
+UAV images.
+
+The application of the GRASS GIS includes various fields such as archeology, cartography, geology,
+geophysics and meteorology, although in our case it does not suit for the task. On of the  biggest
+drawbacks is steep learning curve. The program requires extended knowledge from  the user in the
+field of the geographical analysis and programming. The target audience are scientists and
+engineers. Another  problem is complex installation and distribution process. On Mac OS X, the
+installation  requires six dependent libraries. Moreover, the last version of the Mac OS X (10.11)
+is not  supported.
+
+\subsubsection{QGIS}
+
+\begin{figure}[ht]
+  {\par\centering
+  \includegraphics[width=0.70\textwidth]{qgis}
+  \par}
+  \caption{QGIS interface.}
+  \label{pic:qgis}
+\end{figure}
+
+QGIS is a free software for geographical data viewing, editing and analysis. The software is
+licensed under GNU GPL. The development process started in 2002 with extensive use of the Qt
+library. QGIS runs on multiple operating systems including Mac OS X, Linux and Windows.
+The functionality of the QGIS can be extended via plug-ins written in Python.
+
+Although QGIS lacks some features of the GRASS GIS, it has simpler UI (see example on
+Figure~\ref{pic:qgis}) and does not have support of latest Mac OS X (10.11). Moreover, there are web
+based implementations of the QGIS such as QGIS Server and QGIS Web Client. On the other hand, the
+interface is still requires some programming and geographical background.
+
+\subsubsection{CartoDB}
+
+\begin{figure}[ht]
+  {\par\centering
+  \includegraphics[width=0.70\textwidth]{cartodb}
+  \par}
+  \caption{CartoDB interface.}
+  \label{pic:cartodb}
+\end{figure}
+
+CartoDB is a browser based proprietary solution for mapping and analysis, which provides simplest
+interface in comparison to GRASS GIS and QGIS. Indeed, CartoDB is a great tool for creating
+interactive maps for the user without particular background in the field. Another huge plus of the
+platform is simplicity of the distribution. Basically anyone with access to the Internet and modern
+browser can view interactive map. However, for our purpose the performance was not sufficient and
+basic filtering over the dataset was taking up to 10 seconds.
+
+\subsubsection{Summary}
+
+Among all of the presented solutions simple user interface and access with browser makes CartDB a
+good candidate for the task. Yet, there is an issue with rendering performance which can hardly  be
+solved. Second problem is the restrictions of the API making impossible to implement some of the
+functionality. Finally, it should be underlined that CartoDB free plan does not support datasets
+larger than 250 MB.
 
 \subsection{Modern Web-based Maps}
 In our application the choice of maps library should be made. In this section several
@@ -175,16 +248,18 @@ solid blue color. Taking in account all of the zoom levels it can lead to millio
 duplicates. However, MBTiles can reference thousands of tiles to the same image without
 the need for loading all look-alike pictures.
 
-Important to note that MBTiles can be used to store both image-based tiles encoded in PNG or
-vector tiles encoded in Protocol Buffers.
-
-\begin{figure}[htp]
+\begin{figure}[ht]
   {\par\centering
   \includegraphics[width=0.20\textwidth]{water-tile}
   \par}
   \caption{Example of the tile duplicate.}
   \label{pic:water-tile}
 \end{figure}
+
+Important to note that MBTiles may be used to store both image-based tiles encoded in PNG or
+vector tiles encoded in Protocol Buffers. This is a crucial detail since vector tiles
+allow real-time styling and provide smoother zooming.
+
 
 
 
