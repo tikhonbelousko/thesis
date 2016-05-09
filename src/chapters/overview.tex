@@ -48,10 +48,10 @@ is not  supported.
   \label{pic:qgis}
 \end{figure}
 
-QGIS is a free software for geographical data viewing, editing and analysis. The software is
-licensed under GNU GPL. The development process started in 2002 with extensive use of the Qt
-library. QGIS runs on multiple operating systems including Mac OS X, Linux and Windows.
-The functionality of the QGIS can be extended via plug-ins written in Python.
+QGIS~\cite{qgis} is a free software for geographical data viewing, editing and analysis. The
+software is licensed under GNU GPL. The development process started in 2002 with extensive use of
+the Qt library. QGIS runs on multiple operating systems including Mac OS X, Linux and Windows. The
+functionality of the QGIS can be extended via plug-ins written in Python.
 
 Although QGIS lacks some features of the GRASS GIS, it has simpler UI (see example on
 Figure~\ref{pic:qgis}) and does not have support of latest Mac OS X (10.11). Moreover, there are web
@@ -68,16 +68,17 @@ interface is still requires some programming and geographical background.
   \label{pic:cartodb}
 \end{figure}
 
-CartoDB is a browser based proprietary solution for mapping and analysis, which provides simplest
-interface in comparison to GRASS GIS and QGIS. Indeed, CartoDB is a great tool for creating
-interactive maps for the user without particular background in the field. Another huge plus of the
-platform is simplicity of the distribution. Basically anyone with access to the Internet and modern
-browser can view interactive map. However, for our purpose the performance was not sufficient and
-basic filtering over the dataset was taking up to 10 seconds.
+CartoDB~\cite{cartodb} is a browser based proprietary solution for mapping and analysis, which
+provides simplest interface (example on Figure~\ref{pic:cartodb})in comparison to GRASS GIS and
+QGIS. Indeed, CartoDB is a great tool for creating interactive maps for the user without particular
+background in the field. Another huge plus of the platform is simplicity of the distribution.
+Basically anyone with access to the Internet and modern browser can view interactive map. However,
+for our purpose the performance was not sufficient and basic filtering over the dataset was taking
+up to 10 seconds.
 
 \subsubsection{Summary}
 
-Among all of the presented solutions simple user interface and access with browser makes CartDB a
+Among all of the presented solutions, simple user interface and access with browser makes CartDB a
 good candidate for the task. Yet, there is an issue with rendering performance which can hardly  be
 solved. Second problem is the restrictions of the API making impossible to implement some of the
 functionality. Finally, it should be underlined that CartoDB free plan does not support datasets
