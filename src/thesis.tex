@@ -3,6 +3,8 @@
 % ---
 % BEGIN SETTINGS
 % ---
+\usepackage[subfigure]{tocloft}
+
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english,finnish]{babel}
@@ -165,5 +167,10 @@
 % ---
 \addcontentsline{toc}{section}{REFERENCES}
 \bibliography{bibliography/references}
+
+% ---
+% Appendix
+% ---
+\include{chapters/appendix}
 
 \end{document}
