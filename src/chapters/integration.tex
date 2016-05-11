@@ -1,14 +1,56 @@
 %!TEX root = ../thesis.tex
 \section{INTEGRATION}
 
-Development of the software is very related to the problems of the distribution and
-setting up development environment. In this section the methods which were used for
-building client code will be described. Another section will be devoted to the
-deploying process.
+% Development of the software is very related to the problems of the distribution and
+% setting up development environment.
+
+% Programming environment is crucial in the process of the software development.
+
+One of the important aspects of the development process is the set of tools which were
+used. In this section the particular methods and tools will be described which
+were applied on course of making this program. Another part will be devoted to
+the deployment.
 
 \subsection{Development Environment}
 
-The tools on the client side are developed with enormous speed. If previously the
+Right set of tools can significantly speed up development process by lowering probability of making
+an error, provide extensions to the language which may help to structure code for higher
+maintainability. In out project, tools may be split into two categories, namely client-side and
+server-side utilities.
 
-\subsection{Building a Project}
-\subsection{Deploying a Project}
+When JavaScript was used for simple interactions on the HTML page, the development of the client
+code was quite straight-forward: create \texttt{.js} file, write some code, include the script to
+the index.html. Unfortunately, when applications started to become more complex it was clear that
+code had to be split into reusable modules. This problem was solved in ES2015 JavaScript standard
+[REFERENCE] which introduced the concept of modules, however, now only small percent of the browsers
+support new standard. To solve the problem with compatibility the Webpack was chosen. Webpack is a
+module bundler which allows split the code into different files. Once the project would need to
+built webpack is going through all of the imports and packing all modules in one solid bundle which
+can be easily included into HTML page.
+
+One of the core concepts of the webpack is loaders. Loader is a transformation
+of the file. There are pre-installed loaders such as JavaScript loader for
+bundling JavaScript files together. Loaders can be chained, allowing to use modern
+JavaScript syntax that can be transformed to normal JavaScript. Webpack
+works not only with JavaScript, but also with CSS so it becomes possible to include
+CSS files in JavaScript and use plug-ins like ``autoprefixer'' to write cleaner styles.
+
+It is a common problem when different project use different versions of the same
+package. To overcome this issue on the server the pyenv was used. Pyenv allows
+to create virtual environment where you can locally install all needed packages. Virtual
+environments are completely isolated which illuminates the problem of the dependencies version
+conflict.
+
+\subsection{Deploying the Project}
+
+To quickly run project in development environment the make tool was used. There is a Makefile
+which runs all needed commands to start up three servers on different ports. However,
+to run project on remote server four steps need to be performed:
+
+\begin{enumerate}
+  \item Install all dependencies.
+  \item Build client code.
+  \item Install proxy server such nginx [REFERENCE] and wire up tile server and API server ports with it.
+  \item Setup nginx for serving statics (HTML, JavaScript and assets) on 80 port.
+  \item Start the tile server and the API server.
+\end{enumerate}
