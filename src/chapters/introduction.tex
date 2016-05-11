@@ -1,10 +1,10 @@
 %!TEX root = ../thesis.tex
-\section{ INTRODUCTION }
+\section{INTRODUCTION}
 
-\subsection{ Background }
+\subsection{Background}
 % In recent years, there have been many papers describing ...
 
-\subsection{ Objectives and Delimitations }
+\subsection{Objectives and Delimitations}
 The objective of this thesis is to design a software for transport accessibility analysis
 which can used for by people without special background in the field. Another important
 requirement is simplicity of the distribution. Thus, software had to be implemented
@@ -14,7 +14,7 @@ rendering and data transfer should be minimized or illuminated completely.
 
 It is expected that the program will be useful for various groups of actors which
 were divided in 5 categories such as state institution, logistics, real estate, science
-and citizens. All categories with description are listed in Table~
+and citizens. The whole list of the potential actors is presented on Table~\ref{tab:actors}.
 
 \begin{table}[ht]
   \renewcommand{\arraystretch}{1.5}
@@ -71,5 +71,21 @@ and citizens. All categories with description are listed in Table~
   \label{tab:actors}
 \end{table}
 
-\subsection{ Structure of the Report }
-The paper is divided into $N$ main sections...
+In contrast with other navigational services like Google Maps and Yandex Maps the software is
+focused on the ability to evaluate current state of the transport accessibility in different regions
+of Moscow. For the Department for Transport and Road Infrastructure Development the service could be
+useful on the stage of the planning new infrastructures like roads and bridges. For the Department for
+Urban Development and Construction the application may provide an understanding of the
+accessibility level in certain location. In the process of building new store or cinema service
+would also help visualize how much time does it take to get to the location.
+
+\subsection{Structure of the Report}
+
+The thesis is divided into 7 main sections. The first section is an introduction where the
+background and objectives are discussed. Next section is devoted to the overview of the tools which
+are currently available for geographical analysis, libraries for mapping in the browser and
+description of the data formats used for storing geographical data. After that, comes software
+requirements section where all of the mandatory features are listed. Then, the architecture and
+implementation are described. Next, the development environment and deployment process is outlined on
+integration section. In the last section final results are presented. There is also an appendix
+containing screen shots of the different states of the application with the description.
