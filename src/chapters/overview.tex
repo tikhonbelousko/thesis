@@ -8,7 +8,7 @@ data are reviewed.
 \subsection{Geographical Analysis Software}
 
 There are many tools available for analysis of the geo-spatial data. However, in this section
-three different tools such as GRASS, QGIS, CartoDB will be reviewed. Although, mentioned
+three different tools such as GRASS, QGIS, CartoDB will be described. Although, mentioned
 tools may be considered as GIS, each of them provides different functionality and oriented
 on different user audience.
 
@@ -22,13 +22,13 @@ on different user audience.
   \label{pic:grass}
 \end{figure}
 
-Originally GRASS GIS~\cite{grassgis} (see Figure~\ref{pic:grass}) was developed by US Army Construction Engineering
-Research Laboratories and has a history of 30 years of the development. It is a powerful  and open-
-source tool with large amount of capabilities. First, GRASS supports raster, voxel and vector
-analysis and visualization. In addition to that, there is a toolbox for image processing, allowing
-to apply variety of filters, adjust histograms and perform segmentation tasks. Finally, the program
-supports numerous formats such as SQLite databases, PostgreSQL, mySQL, ODBC, CSV, satellite data,
-UAV images.
+Originally, GRASS GIS~\cite{grassgis} (see Figure~\ref{pic:grass}) was developed by US Army
+Construction Engineering Research Laboratories and has a history of the 30 years of the development.
+It is a powerful and open-source tool with large amount of capabilities. First, GRASS supports
+raster, voxel and vector analysis and visualization. In addition to that, there is a toolbox for
+image processing, allowing to apply variety of filters, adjust histograms and perform segmentation
+tasks. Finally, the program supports numerous formats such as SQLite databases, PostgreSQL, mySQL,
+ODBC, CSV, satellite data, UAV images.
 
 The application of the GRASS GIS includes various fields such as archeology, cartography, geology,
 geophysics and meteorology, although in our case it does not suit for the task. On of the  biggest
@@ -54,7 +54,7 @@ the Qt library. QGIS runs on multiple operating systems including Mac OS X, Linu
 functionality of the QGIS can be extended via plug-ins written in Python.
 
 Although QGIS lacks some features of the GRASS GIS, it has simpler UI (see example on
-Figure~\ref{pic:qgis}) and does not have support of latest Mac OS X (10.11). Moreover, there are web
+Figure~\ref{pic:qgis}) and has a support of the latest Mac OS X (10.11). Moreover, there are web
 based implementations of the QGIS such as QGIS Server and QGIS Web Client. On the other hand, the
 interface is still requires some programming and geographical background.
 
@@ -80,19 +80,19 @@ up to 10 seconds.
 
 Among all of the presented solutions, simple user interface and access with browser makes CartDB a
 good candidate for the task. Yet, there is an issue with rendering performance which can hardly  be
-solved. Second problem is the restrictions of the API making impossible to implement some of the
+solved. Second problem is the restrictions of the API making it impossible to implement some of the
 functionality. Finally, it should be underlined that CartoDB free plan does not support datasets
 larger than 250 MB.
 
 \subsection{Modern Web-based Maps}
 In our application the choice of maps library should be made. In this section several
-libraries for maps drawing are reviewed. The pluses and minuses of each of the
-library are considered.
+libraries for maps drawing are reviewed. The pluses and minuses for each of the
+libraries are considered.
 
 \begin{description}
 
   % Google
-  \item[Google Maps Javascript API] -- on of the most popular libraries
+  \item[Google Maps Javascript API] -- one of the most popular libraries
     on the list~\cite{google:maps}. \\
     \underline{\smash{Pluses:}}
     \begin{itemize}
@@ -167,7 +167,7 @@ library are considered.
 
 \subsection{Data Formats}
 
-In the process of the development of transport accessibility analysis tool several
+In the process of the development of the transport accessibility analysis tool several
 particular data formats were used. In this section utilized formats will be described.
 
 \subsubsection{GeoJSON}
@@ -176,8 +176,8 @@ One of the most extensively used formats for encoding various types of geographi
 GeoJSON which is actually a subset of JSON format~\cite{geojson:spec}. GeoJSON can store information
 about such objects as Point, MultiPoint, Line, LineString, MultiLineString, Polygon. Geometric
 objects which have some additional properties are stored as Feature objects. Moreover,
-Features can be organized in feature collection. The example of the location which
-represents center of the Moscow can be encoded as described on Listing~\ref{lst:geojson}.
+Features can be organized in FeatureCollection. The example of the location which
+represents center of Moscow can be encoded as described on Listing~\ref{lst:geojson}.
 
 \begin{lstlisting}[language=json, caption=GeoJSON data example.,
       label={lst:geojson}]
@@ -194,7 +194,7 @@ represents center of the Moscow can be encoded as described on Listing~\ref{lst:
 \end{lstlisting}
 
 
-The GeoJSON is text data format which results in larger size of the transfered data in comparison
+GeoJSON is a text data format which results in larger size of the transfered data in comparison
 with binary formats. Although, usually on the server it can be compressed using gzip~\cite{gzip}
 which has native support in modern browsers. Compression results in dramatical size reduction up to
 5 times in general case. However, it should be mentioned that archiving adds small overhead in
@@ -204,12 +204,12 @@ coding and decoding steps.
 
 Geobuf is a compact data format for encoding geographical data. The format is based on Protocol
 Buffers -- language-neutral mechanism developed by Google for serializing structured
-data~\cite{protobuf}. Geobuf allows losslessly transformation of the GeoJSON data into protocol
-buffers. There are several important advantages like faster compression in comparison to even native
-JSON \texttt{parse} and \texttt{stringify} methods. Another valuable attribute of this format is
-compact size, which is 8 times smaller than raw GeoJSON and 2 times smaller than GeoJSON after
-applying gzip compression. The comparison of GeoJSON and Geobuf in terms size is presented on
-Table~\ref{tab:geobuf}.
+data~\cite{protobuf}. Geobuf allows to perform lossless transformations of the GeoJSON data into
+protocol buffers. There are several important advantages like faster compression in comparison to
+even native JSON \texttt{parse} and \texttt{stringify} methods. Another valuable attribute of this
+format is compact size, which is 8 times smaller than raw GeoJSON and 2 times smaller than GeoJSON
+after applying gzip compression. The comparison of GeoJSON and Geobuf in terms of the size is
+presented in Table~\ref{tab:geobuf}.
 
 \begin{table}[ht]
   \renewcommand{\arraystretch}{1.5}
@@ -235,7 +235,7 @@ Table~\ref{tab:geobuf}.
 \subsubsection{MBTiles}
 
 Web maps may contain million of tiles, hence there is clearly a problem in storing and managing such
-enormous amount of data. To overcome the problem of handling so many tiles data Mapbox team has
+an enormous amount of data. To overcome the problem of handling so many tiles, Mapbox team has
 developed open-source data format for storing tiles in a single SQLite data base.
 
 SQLite is claimed to be ideal for the purpose of storing tiles since it is available on all of the
@@ -253,7 +253,7 @@ the need for loading all look-alike pictures.
   {\par\centering
   \includegraphics[width=0.20\textwidth]{water-tile}
   \par}
-  \caption{Example of the tile duplicate.}
+  \caption{Example of the tile duplicate which is a part of the ocean.}
   \label{pic:water-tile}
 \end{figure}
 
