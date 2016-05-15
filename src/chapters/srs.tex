@@ -16,8 +16,8 @@ explanation.
 \subsection{Graphical User Interface}
 
 The interface design was provided by Mathrioshka LLC, which includes set of different states
-of the application with small description provided. The interface should have been implemented
-to work in browser with use of HTML5 standard. The whole program should be implemented
+of the application with small description provided. The interface should be implemented
+to work in a browser with use of HTML~5 standard. The whole program should be implemented
 as single page application, which means that all changes in the state of the application
 happen without page reload. The interface have to be responsive and support screen sizes
 starting from $800 \times 600$ pixels.
@@ -27,7 +27,7 @@ Most important elements are listed below:
 
 \begin{enumerate}
   \item Mode selector is needed for switching from general overview to location-wise analysis and
-  located in the left bottom corner of the screen.
+  placed in the left bottom corner of the screen.
 
   \begin{figure}[ht]
     \centering
@@ -47,7 +47,7 @@ Most important elements are listed below:
     \label{pic:overview_selector}
   \end{figure}
 
-  \item Transport filter is a set of checkboxes where every checkbox represent certain
+  \item Transport filter is a set of checkboxes where every checkbox represents a certain
   type of transport. This component is placed on top of the screen.
 
   \begin{figure}[ht]
@@ -68,7 +68,7 @@ Most important elements are listed below:
   \end{figure}
 
   \item Map is the most important element of the interface which is presented on every screen
-  of the application the only thing that changes is the content of the map.
+  of the application and the only thing that changes is the content of the map.
   This component can show points, areas, routes and also provides functionality for
   selecting particular locations for analysis.
 
@@ -100,15 +100,15 @@ was not tested.
 
   \underline{\smash{Main scenario:}}
   \begin{enumerate}
-    \item User enters ``Location analysis'' mode.
-    \item User selects specific point on the grid.
-    \item The system displays all routes coming from selected point to all other points on the
+    \item The user enters ``Location analysis'' mode.
+    \item The user selects specific point on the grid.
+    \item The system displays all routes coming from the selected point to all other points on the
     grid. The routes are colored by the type of transport. The line which represents part
-    of the route has a width depending on weight of current line. The weight is calculated
-    as occurrence of this line in all possible routes, which means if two different
+    of the route has a width depending on weight of the current line. The weight is calculated
+    as occurrence of this line in all possible routes. More precisely, if two different
     routes are going over particular line it means that the weight of this line will
     be equal to two. In other words the wider the line, the more this line is used in all other
-    directions calculated for all points on the grid to all points.
+    directions (routes) calculated for all points on the grid to all other points.
     \item The user is able to filter lines by transport type.
     \item The user is able to switch color mode from coloring by transport to
     coloring by speed.
@@ -121,8 +121,8 @@ was not tested.
 
   \underline{\smash{Main scenario:}}
   \begin{enumerate}
-    \item User enters ``General overview'' mode.
-    \item User selects ``Prevailing transport'' option.
+    \item The user enters ``General overview'' mode.
+    \item The user selects ``Prevailing transport'' option.
     \item The grid of markers is displayed. Each marker is associated with one
     point on the grid. The markers are colored accordingly to certain transport type. Prevailing
     transport is defined by calculating total time spent in particular transport when
@@ -137,8 +137,8 @@ was not tested.
 
   \underline{\smash{Main scenario:}}
   \begin{enumerate}
-    \item User enters ``General overview'' mode.
-    \item User selects ``Most accessible locations'' option.
+    \item The user enters ``General overview'' mode.
+    \item The user selects ``Most accessible locations'' option.
     \item The grid of markers is displayed. Each marker is associated with one
     point on the grid. The markers are colored accordingly to accessibility level of the
     certain point. Accessibility is defined as total time spent in transport when user
@@ -154,8 +154,8 @@ was not tested.
 
   \underline{\smash{Main scenario:}}
   \begin{enumerate}
-    \item User enters ``General overview'' mode.
-    \item User selects ``Least accessible locations'' option.
+    \item The user enters ``General overview'' mode.
+    \item The user selects ``Least accessible locations'' option.
     \item The grid of markers is displayed. Each marker is associated with one
     point on the grid. The markers are colored accordingly to accessibility level of the
     certain point. Accessibility is defined as total time spent in transport when user
@@ -174,8 +174,8 @@ was not tested.
 
   \underline{\smash{Main scenario:}}
   \begin{enumerate}
-    \item User enters ``General overview'' mode.
-    \item User selects ``Fastest parts of the routes'' option.
+    \item The user enters ``General overview'' mode.
+    \item The user selects ``Fastest parts of the routes'' option.
     \item All of the lines (routes) are displayed which has speed in a range from
     20 km/h to 40 km/h. The lines are colored differently from yellow to green
     depending on the speed.
@@ -189,9 +189,9 @@ was not tested.
 
   \underline{\smash{Main scenario:}}
   \begin{enumerate}
-    \item User enters ``General overview'' mode.
-    \item User selects ``Slowest parts of the routes'' option.
-    \item All of the lines (routes) are displayed which has speed in a range from
+    \item The user enters ``General overview'' mode.
+    \item The user selects ``Slowest parts of the routes'' option.
+    \item All of the lines (routes) are displayed if the speed is in the range from
     0 km/h to 20 km/h. The lines are colored differently from dark red to light red
     depending on the speed.
     \item The user is able to filter lines by speed using slider control.
