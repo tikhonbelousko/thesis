@@ -1,7 +1,7 @@
 %!TEX root = ../thesis.tex
 
-\section{ ARCHITECTURE }
-\subsection{ Client }
+\section{ARCHITECTURE}
+\subsection{Client}
 
 The first significant part of the application is the client which will
 be the interface for the user to manipulate map and data. The core functionality of the client
@@ -21,21 +21,21 @@ is follows:
   which will be used to filter roads within particular speed range.
   \item Showing most accessible points on the grid. The transport accessibility coefficient of the
   point can be defined as total time spent in a transport while moving from selected point to all
-  other points. All of the values after that scaled to be between 0 and 1. This view should also
+  other points. All of the values after that are scaled to be between 0 and 1. This view should also
   have a filter by transport accessibility coefficient.
 \end{enumerate}
 
-For the reason of the easy distribution it was selected to use browser based client. Thus
-client is implemented as single-page web application, which should support all modern browsers such
-as Safari, Google Chrome, Firefox, Microsoft Edge.
+For the reason of the easy distribution it was selected to use browser based client. Thus,
+client is implemented as single-page web application, which supports all modern browsers such
+as Safari, Google Chrome, Firefox and Microsoft Edge.
 
-\subsection{ RESTful Server }
+\subsection{RESTful Server}
 
 For serving data to the client it was selected to utilize RESTful~\cite{rest:wiki} architectural
 style, which represents HTTP approach to read, update and delete data. Due to the fact, that our
 application will only read data and not modify it, then we will only need to describe all of
-the end-points for data access where data will be encoded in GeoJSON~\cite{geojson:spec}.
-For our application following end-points were selected:
+the API end-points (URLs) for data access, where data will be encoded in
+GeoJSON~\cite{geojson:spec}. For our application following end-points were selected:
 
 \begin{itemize}
   \item \textbf{\texttt{GET /points}} \\
@@ -69,9 +69,9 @@ For our application following end-points were selected:
 
   \item \textbf{\texttt{GET /lines?point\_id}}
 
-  This endpoint is parametrized by point\_id which means that if point id is presented
-  then the client will receive only those lines which are associated with specified point.
-  On the other hand, if no point id is not specified all lines are returned.
+  This endpoint is parametrized by \texttt{point\_id} which means that if \texttt{point\_id} is
+  presented then the client will receive only those lines which are associated with specified point.
+  On the other hand, if no \texttt{point\_id} is not specified then all lines are returned.
 
   The properties of the lines can be describe as follows (see also Listing~\ref{lst:lines_format}):
   \begin{description}
@@ -96,8 +96,7 @@ For our application following end-points were selected:
       "width": 1,
       "weight": 200
       "duration": 100,
-      "distance": 400,
-      "travelMode": "BUS"
+      "distance": 400
     ]
   }
 }
@@ -114,7 +113,7 @@ it was investigated that for our purposes rendering becomes rather slow and afte
 optimizations the best rendering time was close to 3 seconds. The next improvement to the
 current scheme will be adding tile server which can significantly speed up rendering time.
 
-\subsection{ Tile Server }
+\subsection{Tile Server}
 Graphical map tiles are usually rectangular images in raster or vector format. Most of the popular
 map library providers utilize tiles~\cite{google:tiles, mapbox:tiles} for rendering their maps.
 Raster tiles are basically images which do not allow to change color of roads and landscapes.
@@ -122,14 +121,14 @@ In contrast, vector tiles are not just images but structures which contain geome
 metadata such as roads, rivers, places in special compact format. Vector tiles only rendered when
 requested by the client.
 
-There are several benefits of using vector tiles. The first, advantage is small size of the tiles,
-which allows rendering of high resolution and caching. The second advantage is an ability to change
+There are several benefits of using vector tiles. The first advantage is a small size of the tiles,
+which allows rendering of high resolution and caching. The second advantage is the ability to change
 style of the layers: adjust colors of the geometry, line width, set borders to polygons,
 set background patterns. Finally, maps based on vector tiles allow smooth transitions between
 zoom levels. Although, the cost of usage of the vector tiles is the lack of
 compatibility with older browsers. At the moment most of the libraries demand WebGL support and
 latest browser versions which are Chrome 49.0, Safari 9, Internet Explorer 10 and higher,
-Microsoft Edge 13~\cite{google:support,mapbox:support}. Another drawback of usage tiles is
+Microsoft Edge 13~\cite{google:support,mapbox:support}. Another drawback of tiles usage is
 that geometry can not be transformed in real-time and rendering small amounts of data is actually
 slower than GeoJSON approach.
 
@@ -139,7 +138,7 @@ then with tile server rendering takes less than a second and size of the data tr
 client is around 100 kb.
 
 
-\subsection{ Summary }
+\subsection{Summary}
 
 Although, tiles suit well for rendering considerable amounts data, for points rendering it was
 decided to utilize GeoJSON data. The final architecture is illustrated on
