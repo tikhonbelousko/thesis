@@ -1,51 +1,51 @@
 %!TEX root = ../thesis.tex
 \section{INTEGRATION}
 
-One of the important aspects of the development process is the set of tools which were
+One of the most important aspects of the development process is the set of tools which were
 used. In this section the particular methods and tools will be described, which
 were applied on course of making this program. Another part will be devoted to
-the deployment.
+the deployment process.
 
 \subsection{Development Environment}
 
 Right set of tools can significantly speed up development process by lowering probability of making
 an error, provide extensions to the language which may help to structure code for higher
-maintainability. In out project, tools may be split into two categories, namely client-side and
+maintainability. In our project tools may be split into two categories, namely client-side and
 server-side utilities.
 
 When JavaScript was used for simple interactions on the HTML page, the development of the client
 code was quite straight-forward: create \texttt{.js} file, write some code, include the script to
-the index.html. Unfortunately, when applications started to become more complex it was clear that
-code had to be split into reusable modules. This problem was solved in ES2015 JavaScript standard
-[REFERENCE] which introduced the concept of modules, however, now only small percent of the browsers
-support new standard. To solve the problem with compatibility the Webpack was chosen. Webpack is a
-module bundler which allows split the code into different files. Once the project would need to
-built webpack is going through all of the imports and packing all modules in one solid bundle which
-can be easily included into HTML page.
+the \texttt{index.html}. Unfortunately, when applications started to become more complex it was
+clear that the code has to be split into reusable modules. This problem was solved in ES2015
+JavaScript standard~\cite{es2015} which introduced the concept of modules, however, now only small
+percent of the browsers support new standard. To solve the problem with compatibility the
+Webpack~\cite{webpack} was chosen. Webpack is a module bundler which allows split the code into
+different files. Once the project would need to be built Webpack is going through all of the imports
+and packing all modules in one solid bundle which can be easily included into HTML page.
 
-One of the core concepts of the webpack is loaders. Loader is a transformation
+One of the core concepts of Webpack is the loaders. The loader is a transformation
 of the file. There are pre-installed loaders such as JavaScript loader for
-bundling JavaScript files together. Loaders can be chained, allowing to use modern
-JavaScript syntax that can be transformed to normal JavaScript. Webpack
+bundling JavaScript files together. Loaders can be chained allowing to use modern
+JavaScript syntax that can be transformed into normal JavaScript. Webpack
 works not only with JavaScript, but also with CSS so it becomes possible to include
 CSS files in JavaScript and use plug-ins like ``autoprefixer'' to write cleaner styles.
 
-It is a common problem when different project use different versions of the same
-package. To overcome this issue on the server the pyenv was used. Pyenv allows
-to create virtual environment where you can locally install all needed packages. Virtual
-environments are completely isolated which illuminates the problem of the dependencies version
-conflict.
+It is a common problem when different projects use different versions of the same package. To
+overcome this issue on the server the venv~\cite{venv} was used. Venv allows to create virtual
+environment where you can locally install all needed packages. Virtual environments are completely
+isolated which illuminates the problem of the dependencies version conflict.
 
 \subsection{Deploying the Project}
 
 To quickly run project in development environment the make tool was used. There is a Makefile
 which runs all needed commands to start up three servers on different ports. However,
-to run project on remote server four steps need to be performed:
+to run project on remote server five steps need to be performed:
 
 \begin{enumerate}
   \item Install all dependencies.
   \item Build client code.
-  \item Install proxy server such nginx [REFERENCE] and wire up tile server and API server ports with it.
+  \item Install proxy server such nginx~\cite{nginx} and wire up tile server and API server ports
+    with it to make it accessible on 80 port.
   \item Setup nginx for serving statics (HTML, JavaScript and assets) on 80 port.
   \item Start the tile server and the API server.
 \end{enumerate}
