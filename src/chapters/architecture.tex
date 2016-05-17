@@ -34,8 +34,8 @@ as Safari, Google Chrome, Firefox and Microsoft Edge.
 For serving data to the client it was selected to utilize RESTful~\cite{rest:wiki} architectural
 style, which represents HTTP approach to read, update and delete data. Due to the fact, that our
 application will only read data and not modify it, then we will only need to describe all of
-the API end-points (URLs) for data access, where data will be encoded in
-GeoJSON~\cite{geojson:spec}. For our application following end-points were selected:
+the API resources for data access, where data will be encoded in
+GeoJSON~\cite{geojson:spec}. For our application following resources were selected:
 
 \begin{itemize}
   \item \textbf{\texttt{GET /points}} \\
@@ -135,7 +135,7 @@ slower than GeoJSON approach.
 Switching from GeoJSON server to vector-tile server resulted in considerable speed improvement.
 If previously rendering time took around 3 seconds and amount of transfered data was around 1.8 Mb,
 then with tile server rendering takes less than a second and size of the data transfered to the
-client is around 100 kb.
+client is around 100 KB.
 
 
 \subsection{Summary}
