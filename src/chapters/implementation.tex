@@ -231,14 +231,16 @@ of concerns. Thus, for the development Redux and React libraries were chosen.
 React components were organized as it is illustrated on Figure~\ref{pic:comp-diag} accordingly to
 the approach of presentational and container components~\cite{redux:ppc}. The main presentational
 component is \texttt{App} which is the only one connected to the store directly. All other
-components are ``dumb'' and receive data as well as actions which are
-needed to be fired from \texttt{App}. The \texttt{SpeedMapButton} represents a switch for choosing
-between coloring lines by speed and by the type of transport. The \texttt{Map} components
-accumulates all of the logic related to drawing maps. The \texttt{TransportFilter} shows
-what kind of transport should be displayed on the map. The \texttt{LocationSelector}
-shows information about selected location. The \texttt{ModeSelector} switches between
-global overview and location information. The positioning of all of the components is illustrated
-on Figure~\ref{pic:comp-screen}.
+components are ``dumb'' and receive data as well as actions which are needed to be fired from
+\texttt{App}. The \texttt{SpeedMapButton} represents a switch for choosing between coloring lines by
+speed and by the type of transport. The \texttt{Map} components accumulates all of the logic related
+to drawing maps. The \texttt{TransportFilter} shows what kind of transport should be displayed on
+the map using set of \texttt{TransportCheckbox} components. The \texttt{LocationSelector} shows
+information about selected location. The \texttt{ModeSelector} switches between global overview and
+location information. The \texttt{OverviewModeSelector} is needed to switch states
+while being in overview mode. The \texttt{ReactSlider} is a third-party component utilized
+for filtering by transport speed and accessibility coefficient. The positioning of all of
+the components is illustrated on Figure~\ref{pic:comp-screen}.
 
 
 \begin{figure}[ht]
